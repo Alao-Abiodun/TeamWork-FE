@@ -1,7 +1,7 @@
 import Navigation from "./Navigation/navigation";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header">
       <div className="header__container">

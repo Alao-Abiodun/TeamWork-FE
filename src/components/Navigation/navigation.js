@@ -1,14 +1,14 @@
 import NavigationItem from "./navigationItem";
 
-const Navigation = () => {
+const Navigation = (props) => {
   return (
     <nav className="navigation">
       <ul className="navigation__list">
-        <NavigationItem link={"/"} exact>
+        <NavigationItem link={"/login"}>
           Login
         </NavigationItem>
         <NavigationItem link={"/"}>Create</NavigationItem>
-        <NavigationItem link={"/"}>Register</NavigationItem>
+        <NavigationItem link={"/register"}>Register</NavigationItem>
         <NavigationItem link={"/"}>Logout</NavigationItem>
       </ul>
     </nav>

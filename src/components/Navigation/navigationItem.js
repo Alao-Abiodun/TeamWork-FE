@@ -1,16 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-const NavigationItem = (props) => {
+const NavigationItem = ({ link, children }) => {
   return (
     <>
       <li className="navigation__item">
-        <NavLink
-          to={props.link}
-       
-          exact={props.exact}
-          className="navigation__link"
-        >
-          {props.children}
+        <NavLink to={link} className="navigation__link">
+          {children}
         </NavLink>
       </li>
     </>
