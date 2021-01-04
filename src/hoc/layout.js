@@ -1,11 +1,12 @@
-import Header from "../components/header";
+import Header from '../components/header';
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Header />
 
-      <main className="main">{props.children}</main>
+      <main className="main">{children}</main>
+      {/* <Register /> */}
     </div>
   );
 };
