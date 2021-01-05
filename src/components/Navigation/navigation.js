@@ -1,17 +1,17 @@
 import NavigationItem from './navigationItem';
 
-const Navigation = () => {
+const Navigation = props => {
   return (
     <nav className="navigation">
       <ul className="navigation__list">
-        <NavigationItem link={'/'} exact>
+        <NavigationItem strict link={'/login'} exact>
           Login
         </NavigationItem>
-        <NavigationItem link={'/'}>Create</NavigationItem>
-        <NavigationItem link={'/Register'} exact>
+        <NavigationItem link={'/create'}>Create</NavigationItem>
+        <NavigationItem link={'/register'} exact>
           Register
         </NavigationItem>
-        <NavigationItem link={'/'}>Logout</NavigationItem>
+        <NavigationItem link={'/logout'}>Logout</NavigationItem>
       </ul>
     </nav>
   );
