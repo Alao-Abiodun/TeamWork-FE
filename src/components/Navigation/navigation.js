@@ -1,3 +1,4 @@
+// @ts-nocheck
 import NavigationItem from './navigationItem';
 
 const Navigation = props => {

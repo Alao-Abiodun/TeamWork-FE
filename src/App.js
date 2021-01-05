@@ -2,7 +2,7 @@
 import './App.css';
 import Layout from './hoc/layout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Register from './containers/auth/Register';
+import Register from './containers/auth/register';
 
 function App() {
   return (
