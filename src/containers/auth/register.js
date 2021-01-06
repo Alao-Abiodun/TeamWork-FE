@@ -9,74 +9,77 @@ function Register() {
       value: "",
       placeholder: "First Name",
       type: "text",
+      elementType: "input",
+      name: "firstName"
     },
     lastName: {
       value: "",
       placeholder: "Last Name",
       type: "text",
+      elementType: "input",
+      name: "lastName"
     },
     email: {
       value: "",
       placeholder: "email address",
       type: "email",
+      elementType: "input",
+      name: "email"
     },
     password: {
       type: "password",
       value: "",
       placeholder: "Password",
+      elementType: "input",
+      name: "password"
+    },
+
+    jobRole: {
+      type: "text",
+      placeholder: "Job Role",
+      value: "",
+      name: "jobRole"
+    },
+    department: {
+      type: "text",
+      placeholder: "Department",
+      value: "",
+      name:"department"
     },
     male: {
       type: "radio",
       name: "gender",
       id: "male",
       value: "Male",
+      label: "Male",
     },
     female: {
       type: "radio",
       name: "gender",
       id: "female",
-      value: "fmeale",
+      value: "female",
+      label: "Female",
     },
-    jobRole: { type: "text", placeholder: "Job Role", value: "" },
-    department: { type: "text", placeholder: "Department", value: "" },
   };
   const [formData, setformData] = useState(initialState);
 
   const handleChange = (e) => {
+    console.log(e.target);
     const { value, name } = e.target;
     const updatedForm = {
       ...formData[name],
-
       value: value,
     };
     setformData({
       ...formData,
-      [name]: updatedForm, // email, firstName
-
-      /*
-      email:{
-      value: "mayowad"
-      }
-      */
+      [name]: updatedForm,
     });
-    // setformData(updatedForm);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
-
-
-  // const {
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   password,
-  //   gender,
-  //   jobRole,
-  //   department,
-  // } = formData;
 
   let registerForm = [];
 
@@ -86,16 +89,17 @@ function Register() {
       config: formData[key],
     });
   }
-  // console.log(registerForm);
   let form = registerForm.map((form) => (
     <Input
       key={form.key}
       type={form.config.type}
       id={form.key}
       value={form.config.value}
-      name={form.key}
+      name={form.config.name}
       placeholder={form.config.placeholder}
       onchange={handleChange}
+      label={form.config.label}
+      checked={form.config.checked}
     />
   ));
   return (
@@ -103,7 +107,6 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           {form}
-
           <button type="submit">Submit</button>
         </div>
       </form>
