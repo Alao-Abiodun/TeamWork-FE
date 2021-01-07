@@ -18,7 +18,16 @@ function Register() {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formData);
+    const data = {
+      firstName,
+      lastName,
+      email,
+      password,
+      gender,
+      jobRole,
+      department,
+    };
+    console.log(data);
   };
   const {
     firstName,
