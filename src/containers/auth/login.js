@@ -27,6 +27,7 @@ function Login() {
         <div className="container">
           <form onSubmit={handleSubmit}>
             <div className="form-control">
+                <h1>Login</h1>
               <div className="form-group">
                 {/* <label htmlFor="title">Title </label> */}
                 <input

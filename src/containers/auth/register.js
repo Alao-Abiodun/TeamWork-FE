@@ -42,6 +42,7 @@ function Register() {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="form-control">
+          <h1>Register</h1>
           <div className="form-group">
             {/* <label htmlFor="firstName">First Name </label> */}
             <input
