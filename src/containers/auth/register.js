@@ -1,147 +1,115 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import './register.css';
+import Input from '../../components/Input';
 
 function Register() {
   const initialState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    gender: '',
-    jobRole: '',
-    department: '',
+    firstName: {
+      value: '',
+      placeholder: 'First Name',
+      type: 'text',
+      elementType: 'input',
+      name: 'firstName',
+    },
+    lastName: {
+      value: '',
+      placeholder: 'Last Name',
+      type: 'text',
+      elementType: 'input',
+      name: 'lastName',
+    },
+    email: {
+      value: '',
+      placeholder: 'email address',
+      type: 'email',
+      elementType: 'input',
+      name: 'email',
+    },
+    password: {
+      type: 'password',
+      value: '',
+      placeholder: 'Password',
+      elementType: 'input',
+      name: 'password',
+    },
+
+    jobRole: {
+      type: 'text',
+      placeholder: 'Job Role',
+      value: '',
+      name: 'jobRole',
+    },
+    department: {
+      type: 'text',
+      placeholder: 'Department',
+      value: '',
+      name: 'department',
+    },
+    male: {
+      type: 'radio',
+      name: 'gender',
+      id: 'male',
+      value: 'Male',
+      label: 'Male',
+    },
+    female: {
+      type: 'radio',
+      name: 'gender',
+      id: 'female',
+      value: 'female',
+      label: 'Female',
+    },
   };
   const [formData, setformData] = useState(initialState);
+
   const handleChange = e => {
-    const { name, value } = e.target;
-    setformData({ ...formData, [name]: value });
+    console.log(e.target);
+    const { value, name } = e.target;
+    const updatedForm = {
+      ...formData[name],
+      value: value,
+    };
+    setformData({
+      ...formData,
+      [name]: updatedForm,
+    });
   };
+
   const handleSubmit = e => {
     e.preventDefault();
     const data = {
-      firstName,
-      lastName,
-      email,
-      password,
-      gender,
-      jobRole,
-      department,
+      form,
     };
     console.log(data);
   };
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    gender,
-    jobRole,
-    department,
-  } = formData;
+
+  let registerForm = [];
+
+  for (let key in formData) {
+    registerForm.push({
+      key: key,
+      config: formData[key],
+    });
+  }
+  let form = registerForm.map(form => (
+    <Input
+      key={form.key}
+      type={form.config.type}
+      id={form.key}
+      value={form.config.value}
+      name={form.config.name}
+      placeholder={form.config.placeholder}
+      onchange={handleChange}
+      label={form.config.label}
+      checked={form.config.checked}
+    />
+  ));
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <h1>Register</h1>
-          <div className="form-group">
-            {/* <label htmlFor="firstName">First Name </label> */}
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={firstName}
-              onChange={handleChange}
-              placeholder="First Name"
-            />
-          </div>
-          <div className="form-group">
-            {/* <label htmlFor="lastName">Last Name </label> */}
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={lastName}
-              onChange={handleChange}
-              placeholder="Last Name"
-            />
-          </div>
-          <div className="form-group">
-            {/* <label htmlFor="title">Title </label> */}
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            {/* <label htmlFor="email">Password </label> */}
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="password"
-            />
-          </div>
-          <div className="form-group">
-            {/* <label htmlFor="department">Department </label> */}
-            <input
-              type="text"
-              id="department"
-              name="department"
-              value={department}
-              onChange={handleChange}
-              placeholder="department"
-            />
-          </div>
-          <div className="form-group">
-            {/* <label htmlFor="department">Department </label> */}
-            <input
-              type="text"
-              id="jobRole"
-              name="jobRole"
-              value={jobRole}
-              onChange={handleChange}
-              placeholder="JobRole"
-            />
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="female"
-              name="gender"
-              value="Female"
-              onChange={handleChange}
-              checked={gender === 'Female'}
-            />
-            <label htmlFor="female">Female</label>
-          </div>
-          <div>
-            <input
-              id="male"
-              type="radio"
-              name="gender"
-              value="Male"
-              onChange={handleChange}
-              checked={gender === 'Male'}
-            />
-            <label htmlFor="male">Male</label>
-          </div>
-          <div>
-            <input
-              id="other"
-              type="radio"
-              name="gender"
-              value="Other"
-              onChange={handleChange}
-              checked={gender === 'Other'}
-            />
-            <label htmlFor="other">Other</label>
-          </div>
+          {form}
           <button type="submit">Submit</button>
         </div>
       </form>

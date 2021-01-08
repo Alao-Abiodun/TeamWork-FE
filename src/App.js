@@ -2,8 +2,8 @@
 import './App.css';
 import Layout from './hoc/layout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Register from './containers/auth/Register';
-import Login from './containers/auth/Login'
+import Register from './containers/auth/register';
+import Login from './containers/auth/Login';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Layout>
           <Switch>
             <Route path="/register" component={Register} />
-            <Route path='/login' component={Login} />
+            <Route path="/login" component={Login} />
           </Switch>
         </Layout>
       </div>
